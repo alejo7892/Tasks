@@ -28,6 +28,7 @@ const Login = () => {
           padding: "9px",
           width: "250px",
           borderRadius: "30px",
+          textAlign:'center'
         }}
       >
         <h1 style={{ color: "#fff" }}>Login</h1>

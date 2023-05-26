@@ -6,11 +6,9 @@ const DeleteCard = () =>{
     const [title,setTitle]=useState("")
     const handleonSubmit = async (e) =>{
         e.preventDefault();
-        const responseD = await taskDelete({
-            title: title,
-          });
+        const responseD = await taskDelete(title);
            
-          
+          console.log(responseD.data);
     } 
     
 
@@ -22,8 +20,9 @@ const DeleteCard = () =>{
           padding: "9px",
           width: "250px",
           borderRadius: "30px",
+          textAlign:'center'
         }}>
-            <h1>eliminar tarea</h1>
+            <h1 style={{color:'#fff',textAlign:'center'}}>eliminar tarea</h1>
 
             <input type="text" placeholder="ingrese la tarea a eliminar"  style={{
             padding: "9px",

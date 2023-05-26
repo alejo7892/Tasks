@@ -20,15 +20,27 @@ export const updateTasks = async (req, res) => {
   )
   
 };
-export const getTasks = (req, res) => {
-  res.send("obteniendo tareas");
+export const getTasks = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tasks"
+    )
+    return res.json(result)
+  } catch (error) {
+    console.log(error);
+  }
 };
 export const deleteTask = async (req, res) => {
-  const {title}=req.body
-  const result = await pool.query(
+  const {title}=req.params
+  const [result] = await pool.query(
     "DELETE FROM tasks WHERE title = ?", [title]
   )
-  console.log(result);  
+  if (result.affectedRows!=0) {
+      return res.json('delete ok')
+  }else{
+    return res.json("no delete")
+  }
+
 };
 export const getTask = (req, res) => {
   res.send("obteniendo tarea");

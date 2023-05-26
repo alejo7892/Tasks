@@ -9,10 +9,10 @@ import {
 
 const router = Router();
 
-router.get("/tasks", getTasks);
+router.get("/tasksShow", getTasks);
 router.get("/task/:id", getTask);
 router.post("/tasks", createTasks);
 router.put("/taskUpdate", updateTasks);
-router.delete("/taskDelete", deleteTask);
+router.delete("/taskDelete/:title", deleteTask);
 
 export default router;

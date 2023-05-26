@@ -24,8 +24,9 @@ const UpdateCard = ()=>{
           padding: "9px",
           width: "250px",
           borderRadius: "30px",
+          textAlign:'center'
         }}>
-            <h1>actualizar tarea</h1>
+            <h1 style={{color:'#fff',textAlign:'center'}}>actualizar tarea</h1>
 
             <input type="text" placeholder="ingrese la tarea a actualizar"  style={{
             padding: "9px",

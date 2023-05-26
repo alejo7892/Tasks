@@ -14,6 +14,9 @@ export const createCard=async(form)=>{
 export const updateTasks=async(form)=>{
   return await axios.put('http://localhost:4000/taskUpdate',form)
 }
-export const taskDelete=async(form)=>{
-  return await axios.delete('http://localhost:4000/taskDelete',form)
+export const taskDelete=async(parametro)=>{
+  return await axios.delete(`http://localhost:4000/taskDelete/${parametro}`)
+}
+export const cardTask= async()=>{
+  return await axios.get('http://localhost:4000/tasksShow')
 }
