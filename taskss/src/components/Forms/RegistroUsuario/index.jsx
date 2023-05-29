@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { registrarUsuario } from "../../../API";
 
-const registro = (props) => {
+const registro = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ const registro = (props) => {
   };
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-     {props.minombre} 
+ 
       <div
         style={{
           background: "salmon",
@@ -31,7 +31,7 @@ const registro = (props) => {
           position: "center",
         }}
       >
-        {props.nombre}
+        
         
 
         <form onSubmit={gg} style={{textAlign:'center'}}>

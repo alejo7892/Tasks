@@ -1,23 +1,35 @@
 import { useState } from "react";
 import { loginUsuario } from "../../../API";
+import Cookie from "universal-cookie";
+
+
+
+
+
+
 
 const Login = () => {
+  const cookie= new Cookie();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hola,setHola]=useState(true)
-
+  const [nombre,setNombre]=useState()
   const handleonSubmit = async (e) => {
     e.preventDefault();
     const responseL = await loginUsuario({
       email: email,
       password: password,
     });
-    if (responseL.data=="logueado") {
-      alert("Logueado")
+    if (responseL.data[0].correo== email) {
+    cookie.set('correoCookie', responseL.data[0].correo, { path: '/' }); 
+    cookie.set('numeroCookie', responseL.data[0].numero, {path : '/'});
+    cookie.set('nombreCookie', responseL.data[0].nombre, {path : '/'});
+    setNombre(cookie.get('nombreCookie'))
+
     }else{
       alert("no logueado")
     }
-    console.log(responseL);
+    console.log(responseL.data[0]);
   };
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -32,6 +44,7 @@ const Login = () => {
         }}
       >
         <h1 style={{ color: "#fff" }}>Login</h1>
+        <p>{nombre}</p>
         <input
           type="email"
           placeholder="correo electronico"

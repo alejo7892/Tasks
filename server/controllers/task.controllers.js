@@ -20,16 +20,7 @@ export const updateTasks = async (req, res) => {
   )
   
 };
-export const getTasks = async (req, res) => {
-  try {
-    const [result] = await pool.query(
-      "SELECT * FROM tasks"
-    )
-    return res.json(result)
-  } catch (error) {
-    console.log(error);
-  }
-};
+
 export const deleteTask = async (req, res) => {
   const {title}=req.params
   const [result] = await pool.query(
@@ -42,6 +33,24 @@ export const deleteTask = async (req, res) => {
   }
 
 };
-export const getTask = (req, res) => {
-  res.send("obteniendo tarea");
+export const getTasks = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tasks"
+    )
+    return res.json(result)
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const getUsers =  async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM usuario"
+    )
+   return res.json(result)
+  } catch (error) {
+    console.log(error);
+  }
+  
 };

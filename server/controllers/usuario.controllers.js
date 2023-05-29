@@ -26,10 +26,12 @@ export const login = async (req,res) =>{
     "SELECT * FROM usuario WHERE correo= ? AND contraseña = ?", [email,password]
    )
    if (result.length !=0) {
-   return res.json("logueado")
+   return res.json([{nombre : result[0].nombre, numero : result[0].numero,correo : result[0].correo}])
    }else{
    return res.json("No logueado")
    }
+   
+   console.log(result);
  } catch (error) {
     console.log(error);
  }

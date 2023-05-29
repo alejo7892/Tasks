@@ -20,3 +20,9 @@ export const taskDelete=async(parametro)=>{
 export const cardTask= async()=>{
   return await axios.get('http://localhost:4000/tasksShow')
 }
+export const getUsers= async()=>{
+  return await axios.get('http://localhost:4000/usersShow')
+}
+export const createArticle= async(form)=>{
+  return await axios.post('http://localhost:4000/catalogue',form)
+}

@@ -7,6 +7,8 @@ import CreateCard from "./components/Cards/CreateCard";
 import UpdateCard from "./components/Cards/UpdateCard";
 import DeleteCard from "./components/Cards/DeleteCard";
 import CardTasks from "./components/Cards/CardTasks";
+import ListUsers from "./components/Cards/Users";
+import Catalogue from "./components/catalogue";
 
 const App = () => {
   const [forms, setForms] = useState("sing up");
@@ -29,6 +31,10 @@ const App = () => {
         return <DeleteCard />;
       case "see tasks":
         return <CardTasks />;
+        case "list users":
+        return <ListUsers />;
+        case "create article":
+          return <Catalogue />;
       default:
         break;
     }
@@ -156,9 +162,25 @@ const App = () => {
               color: "#fff",
               cursor: "pointer",
             }}
-            onClick={()=> setForms}
+            onClick={()=> setForms("list users")}
           >
             ver usuarios
+          </li>
+          <li
+            style={{
+              listStyle: "none",
+              border: "2px solid #fff",
+              background: "salmon",
+              borderRadius: "20px",
+              padding: "6px",
+              width: "7%",
+              textAlign: "center",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+            onClick={()=> setForms("create article")}
+          >
+            crear articulo
           </li>
         </ul>
       </div>
