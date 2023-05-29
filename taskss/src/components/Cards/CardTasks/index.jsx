@@ -24,7 +24,7 @@ const CardTasks = ()=>{
        {tasks.length!=0 ? (
         tasks.map((task,i)=>{
             return(
-                <div style={{display:'flex',}}>
+                <div key={i} style={{display:'flex',}}>
                 <div key={i} style={{border:'2px solid black',width:'9%', borderRadius:'30px',padding:'20px',margin:'10px'}}>
                 <h1 style={{color:'red'}}>{task.title}</h1> 
                 <p>{task.description}</p>

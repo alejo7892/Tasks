@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import Registro from "./components/Forms/RegistroUsuario";
@@ -9,21 +9,43 @@ import DeleteCard from "./components/Cards/DeleteCard";
 import CardTasks from "./components/Cards/CardTasks";
 import ListUsers from "./components/Cards/Users";
 import Catalogue from "./components/catalogue";
+import Cookie from "universal-cookie";
 
 const App = () => {
   const [forms, setForms] = useState("sing up");
-  let name='kebyn'
+  const [nombre,setNombre]=useState("")
+  const cookie= new Cookie();
+  
+
+useEffect(()=>{
+  
+setNombre(cookie.get('nombreCookie'))
+
+
+},[nombre])
+
+  
 
   const menu = () => {
+   
+  if (nombre=='' || nombre==undefined) {
     switch (forms) {
       case "sing up":
-        return <Registro  nombre={name}/>;
+        return <Registro  />;
 
       case "sing in":
         return <Login  />;
+    
+      default:
+        break;
+    }
+  }
 
-      case "create tasks":
-        return <CreateCard nombre={name} />;
+    
+
+    switch (forms) {
+        case "create tasks":
+        return <CreateCard  />;
 
       case "update tasks":
         return <UpdateCard />;
@@ -35,10 +57,13 @@ const App = () => {
         return <ListUsers />;
         case "create article":
           return <Catalogue />;
+          case "show articles":
+            return "articulos"
       default:
         break;
     }
   };
+
   return (
     <>
       <div style={{ display: "flex", justifyContent: "center" }}>
@@ -52,7 +77,11 @@ const App = () => {
             padding: "5px",
           }}
         >
-          <li
+
+         {nombre=='' || nombre==undefined  ? 
+         <>
+         <li
+            
             style={{
               listStyle: "none",
               border: "2px solid #fff",
@@ -66,7 +95,6 @@ const App = () => {
             }}
             onClick={() => setForms("sing up")}
           >
-            {" "}
             sing up
           </li>
           <li
@@ -85,6 +113,10 @@ const App = () => {
           >
             sing in
           </li>
+          </>   : ""}
+
+          
+          
           <li
             style={{
               listStyle: "none",
@@ -182,7 +214,25 @@ const App = () => {
           >
             crear articulo
           </li>
+
+          <li
+            style={{
+              listStyle: "none",
+              border: "2px solid #fff",
+              background: "salmon",
+              borderRadius: "20px",
+              padding: "6px",
+              width: "7%",
+              textAlign: "center",
+              color: "#fff",
+              cursor: "pointer",
+            }}
+            onClick={()=> setForms("show articles")}
+          >
+            mostrar articulos
+          </li>
         </ul>
+        {nombre=='' || nombre==undefined  ?  'bolas' : nombre}
       </div>
 
       {/* <CreateCard/>*/}

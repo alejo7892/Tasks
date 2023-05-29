@@ -13,7 +13,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [hola,setHola]=useState(true)
-  const [nombre,setNombre]=useState()
+  const [nombre,setNombre]=useState("")
   const handleonSubmit = async (e) => {
     e.preventDefault();
     const responseL = await loginUsuario({

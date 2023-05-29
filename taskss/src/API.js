@@ -26,3 +26,6 @@ export const getUsers= async()=>{
 export const createArticle= async(form)=>{
   return await axios.post('http://localhost:4000/catalogue',form)
 }
+export const showArticles= async(form)=>{
+  return await axios.get("http://localhost:4000/getArticles")
+}

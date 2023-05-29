@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createArticle } from "../../API";
 const Catalogue = () =>{
-    const [imageC,setimageC] = useState("")
+    const [imageC,setImageC] = useState("")
      const [titleC,setTitleC] = useState("")
      const [descriptionC,setDesciptionC] = useState("")
      const [precio,setPrecio] = useState("")
@@ -9,16 +9,16 @@ const Catalogue = () =>{
      const handleonSubmit =  async (e) =>{
         e.preventDefault();
     const response = await createArticle ({
-        imageC : imageC,
-        titleC : titleC,
-        descriptionC : descriptionC,
+        imagen : imageC,
+        title : titleC,
+        description : descriptionC,
         precio : precio,
    
        }) 
        
        
      }
-    
+     
 
     return (
 
@@ -49,7 +49,7 @@ const Catalogue = () =>{
                 margin: "5px",
               }}
               value={imageC}
-              onChange={(event) => setimageC(event.target.value)}
+              onChange={(event) => setImageC(event.target.value)}
             />
             <br />
             <input
